@@ -11,14 +11,15 @@ class Animes extends Model
     protected $allowedFields = ['nome', 'ano', 'imagem', 'updated_at'];
 
 
+
     public function getAnimes(){
 
-        $query = "SELECT * FROM animes";
+        $query = "SELECT * FROM anime";
 
         $query = $this->db->query($query);
 
         return $query->getResultArray();
 
-       }
+    }
 }
 
