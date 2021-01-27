@@ -19,8 +19,9 @@ class TabelaAnimes extends Migration
                 'null' => false
             ],
             'ano' => [
-                'type' => 'date',
-                'null' => false,
+                'type' => 'int',
+                'constraint' => 7,
+                'null' => true,
             ],
             'imagem' => [
                 'type' => 'VARCHAR',

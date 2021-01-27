@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Controllers\BaseController;
 
 use App\Models\AnimesModel;
 use CodeIgniter\HTTP\Response;
@@ -24,39 +25,26 @@ class Animes extends BaseController
     /**
      * Create a new Client
      */
-    // public function store()
-    // {
-    //     $rules = [
-    //         'name' => 'required',
-    //         'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[client.email]',
-    //         'retainer_fee' => 'required|max_length[255]'
-    //     ];
+    public function store()
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[client.email]',
+            'retainer_fee' => 'required|max_length[255]'
+        ];
 
-    //     $input = $this->getRequestInput($this->request);
+        $input = [
+            'nome' => 'Naruto',
+            'ano' => 2020,
+            'imagem' => 'full'
+        ];
 
-    //     if (!$this->validateRequest($input, $rules)) {
-    //         return $this
-    //             ->getResponse(
-    //                 $this->validator->getErrors(),
-    //                 ResponseInterface::HTTP_BAD_REQUEST
-    //             );
-    //     }
+        $model =  new \App\Models\Animes();
+        
 
-    //     $clientEmail = $input['email'];
+        $model->insert($input);
 
-    //     $model = new ClientModel();
-    //     $model->save($input);
-
-
-    //     $client = $model->where('email', $clientEmail)->first();
-
-    //     return $this->getResponse(
-    //         [
-    //             'message' => 'Client added successfully',
-    //             'client' => $client
-    //         ]
-    //     );
-    // }
+    }
 
     /**
      * Get a single client by ID
