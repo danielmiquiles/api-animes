@@ -41,7 +41,7 @@ class Animes extends ResourceController
     public function find($id)
     {
         try {
-                        
+
             $client = $this->model->find($id);
 
             return $this->respond(
@@ -49,8 +49,11 @@ class Animes extends ResourceController
                     'client' => $client
                 ],200
             );
+
         } catch (Exception $e) {
+
             return $this->respond('',404);
+            
         }
     }
 
