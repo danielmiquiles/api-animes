@@ -22,7 +22,8 @@ class Animes extends ResourceController
         return $this->respond(
             [
                 'clients' => $this->model->findAll()
-            ],200
+            ],
+            200
         );
     }
 
@@ -31,7 +32,10 @@ class Animes extends ResourceController
      * Create a new Client
      */
     public function store()
-    {
+    {        
+        print_r($this->request->getJSON());
+        $request = $this->request->getJSON();
+        print_r($request->nome);
         return $this->respondCreated();
     }
 
@@ -47,13 +51,12 @@ class Animes extends ResourceController
             return $this->respond(
                 [
                     'client' => $client
-                ],200
+                ],
+                200
             );
-
         } catch (Exception $e) {
 
-            return $this->respond('',404);
-            
+            return $this->respond('', 404);
         }
     }
 
@@ -95,7 +98,7 @@ class Animes extends ResourceController
     //         );
     //     }
 
-    
+
     //--------------------------------------------------------------------
 
 }
