@@ -30,8 +30,18 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/animes', 'Animes::store');
+$routes->group('/animes',function($routes){
+
+	$routes->get('/', 'Animes::index');
+	$routes->get('/(:num)', 'Animes::find/$1');
+	$routes->post('/', 'Animes::store');
+
+});
+
+
+
+
+
 
 /**
  * --------------------------------------------------------------------

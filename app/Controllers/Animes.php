@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Controllers;
-use App\Controllers\BaseController;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-
-
+use Exception;
 
 class Animes extends ResourceController
 {
@@ -14,87 +12,48 @@ class Animes extends ResourceController
     use ResponseTrait;
     protected $modelName = '\App\Models\Animes';
 
-    // public function logar()
-    // {
-    //     $model = new ClientModel();
-    //     return $this->getResponse(
-    //         [
-    //             'message' => 'Clients retrieved successfully',
-    //             'clients' => $model->findAll()
-    //         ]
-    //     );
-    // }
+
+
+    /**
+     *  Retorna todos os animes
+     */
+    public function index()
+    {
+        return $this->respond(
+            [
+                'clients' => $this->model->findAll()
+            ],200
+        );
+    }
+
 
     /**
      * Create a new Client
      */
     public function store()
     {
-        // $rules = [
-        //     'name' => 'required',
-        //     'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[client.email]',
-        //     'retainer_fee' => 'required|max_length[255]'
-        // ];
-
-        // $input = [
-        //     'nome' => 'Naruto',
-        //     'ano' => 2020,
-        //     'imagem' => 'full'
-        // ];
-
-        // $model =  new \App\Models\Animes();
-        
-
-        $result = $this->model->getAnimes();
-
-        $response = [
-            'status'   => 200,
-            'error'    => null,
-            'messages' => [
-                'success' => 'Employee updated successfully'
-            ],
-            'data' => $result
-        ];
-
-        return $this->respond($response);
-
+        return $this->respondCreated();
     }
 
     /**
-     * Get a single client by ID
+     * Pega anime pelo id
      */
-    // public function show($id)
-    // {
-    //     try {
+    public function find($id)
+    {
+        try {
+                        
+            $client = $this->model->find($id);
 
-    //         $model = new ClientModel();
-    //         $client = $model->findClientById($id);
+            return $this->respond(
+                [
+                    'client' => $client
+                ],200
+            );
+        } catch (Exception $e) {
+            return $this->respond('',404);
+        }
+    }
 
-    //         return $this->getResponse(
-    //             [
-    //                 'message' => 'Client retrieved successfully',
-    //                 'client' => $client
-    //             ]
-    //         );
-    //     } catch (Exception $e) {
-    //         return $this->getResponse(
-    //             [
-    //                 'message' => 'Could not find client for specified ID'
-    //             ],
-    //             ResponseInterface::HTTP_NOT_FOUND
-    //         );
-    //     }
-    // }
-    //     public function index()
-    //     {
-    //         $model = new ClientModel();
-    //         return $this->getResponse(
-    //             [
-    //                 'message' => 'Clients retrieved successfully',
-    //                 'clients' => $model->findAll()
-    //             ]
-    //         );
-    //     }
 
     //     /**
     //      * Create a new Client
@@ -133,33 +92,7 @@ class Animes extends ResourceController
     //         );
     //     }
 
-    //     /**
-    //      * Get a single client by ID
-    //      */
-    //     public function show($id)
-    //     {
-    //         try {
-
-    //             $model = new ClientModel();
-    //             $client = $model->findClientById($id);
-
-    //             return $this->getResponse(
-    //                 [
-    //                     'message' => 'Client retrieved successfully',
-    //                     'client' => $client
-    //                 ]
-    //             );
-
-    //         } catch (Exception $e) {
-    //             return $this->getResponse(
-    //                 [
-    //                     'message' => 'Could not find client for specified ID'
-    //                 ],
-    //                 ResponseInterface::HTTP_NOT_FOUND
-    //             );
-    //         }
-    //     }
-
+    
     //--------------------------------------------------------------------
 
 }
