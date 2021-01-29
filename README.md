@@ -1,7 +1,7 @@
 
 
 <h1 align="center">
-    <a href="#" alt="site do ecoleta"> Gerenciador de Animes </a>
+    <a href="#" alt="site do ecoleta">API Gerenciador de Animes </a>
 </h1>
 
 <h3 align="center">
@@ -14,8 +14,8 @@
 	🚧   Em construção   🚧
 </h4> 
 
-Tabela de conteúdos 
-=================
+<!-- Tabela de conteúdos 
+================= -->
 <!--ts-->
    <!-- * [Sobre o projeto](#-sobre-o-projeto)
    * [Funcionalidades](#-funcionalidades)
