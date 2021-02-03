@@ -13,7 +13,6 @@ class Animes extends ResourceController
     protected $modelName = '\App\Models\Animes';
 
 
-
     /**
      *  Retorna todos os animes
      */
@@ -27,16 +26,25 @@ class Animes extends ResourceController
         );
     }
 
-
     /**
      * Create a new Client
      */
     public function store()
-    {        
-        print_r($this->request->getJSON());
+    {
         $request = $this->request->getJSON();
-        print_r($request->nome);
-        return $this->respondCreated();
+        $data = [
+            'nome' => $request->nome,
+            'ano' => $request->ano,
+            'imagem' => $request->imagem,
+        ];
+
+        $result = $this->model->insert($data);
+
+        if (!$result) {
+            return $this->respond('', 404);
+        }
+
+        return $this->respond('', 201);
     }
 
     /**
@@ -44,61 +52,59 @@ class Animes extends ResourceController
      */
     public function find($id)
     {
-        try {
+        $client = $this->model->find($id);
 
-            $client = $this->model->find($id);
-
-            return $this->respond(
-                [
-                    'client' => $client
-                ],
-                200
-            );
-        } catch (Exception $e) {
-
+        if (!$client) {
             return $this->respond('', 404);
         }
+
+        return $this->respond($client, 201);
+    }
+
+    /**
+     * Pega anime pelo id 
+     */
+    public function update($id = null)
+    {
+        $data = $this->request->getJSON();
+        
+        $client = $this->model->update($id, $data);
+
+        if (!$client) {
+            return $this->respond('', 404);
+        }
+
+        return $this->respond($client, 200);
+    }
+
+    /**
+     * Pega anime pelo id 
+     */
+    public function delete($id = null)
+    {
+
+        $client = $this->model->delete($id);
+
+        if (!$client) {
+            return $this->respond('', 404);
+        }
+
+        return $this->respond($client, 200);
     }
 
 
-    //     /**
-    //      * Create a new Client
-    //      */
-    //     public function store()
-    //     {
-    //         $rules = [
-    //             'name' => 'required',
-    //             'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[client.email]',
-    //             'retainer_fee' => 'required|max_length[255]'
-    //         ];
 
-    //  $input = $this->getRequestInput($this->request);
+    /**
+     * Pega episódios de um anime espécifico
+     */
+    public function getEpisodios($id = null)
+    {
+        $client = $this->model->where('episodio_id',$id)->findAll();
 
-    //         if (!$this->validateRequest($input, $rules)) {
-    //             return $this
-    //                 ->getResponse(
-    //                     $this->validator->getErrors(),
-    //                     ResponseInterface::HTTP_BAD_REQUEST
-    //                 );
-    //         }
+        if (!$client) {
+            return $this->respond('', 404);
+        }
 
-    //         $clientEmail = $input['email'];
-
-    //         $model = new ClientModel();
-    //         $model->save($input);
-
-
-    //         $client = $model->where('email', $clientEmail)->first();
-
-    //         return $this->getResponse(
-    //             [
-    //                 'message' => 'Client added successfully',
-    //                 'client' => $client
-    //             ]
-    //         );
-    //     }
-
-
-    //--------------------------------------------------------------------
-
+        return $this->respond('', 201);
+    }
 }
