@@ -2,9 +2,9 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class EpisodiosModel extends Model
+class Episodios extends Model
 {
-    protected $table = 'episodios';
+    protected $table = 'episodio';
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'email'];
 }

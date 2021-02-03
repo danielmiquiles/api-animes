@@ -8,14 +8,12 @@
     Pra quem está cansado de acompanhar vários animes e esquece o último episódio assistido.
 </h3>
 
-
-
 <h4 align="center">
 	🚧   Em construção   🚧
 </h4> 
 
-<!-- Tabela de conteúdos 
-================= -->
+Tabela de conteúdos 
+=================
 <!--ts-->
    <!-- * [Sobre o projeto](#-sobre-o-projeto)
    * [Funcionalidades](#-funcionalidades)
