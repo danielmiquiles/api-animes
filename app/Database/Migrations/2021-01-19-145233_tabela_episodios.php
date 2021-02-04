@@ -27,10 +27,15 @@ class TabelaEpisodios extends Migration
                 'type' => 'INT',
                 'constraint' => 7,
                 'null' => false,
+            ],
+            'assistido' => [
+                'type' => 'bit',
+                'null' => false,
+                'default' => 0,
 			],
 			'updated_at' => [
                 'type' => 'datetime',
-                'null' => true,
+                'null' => true,                
             ],
         'created_at datetime default current_timestamp',
         ]);
