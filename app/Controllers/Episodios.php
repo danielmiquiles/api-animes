@@ -15,13 +15,13 @@ class Episodios extends ResourceController
     /**
      * Insere um novo episodio
      */
-    public function store()
+    public function store($anime_id = null)
     {
         $request = $this->request->getJSON();
         $data = [
+            'anime_id' => $anime_id,
             'nome' => $request->nome,
-            'ano' => $request->ano,
-            'imagem' => $request->imagem,
+            'numero' => $request->numero,
         ];
 
         $result = $this->model->insert($data);
@@ -50,11 +50,11 @@ class Episodios extends ResourceController
     /**
      * Pega anime pelo id 
      */
-    public function update($id = null)
+    public function update($anime_id = null, $id = null)
     {
         $data = $this->request->getJSON();
         
-        $client = $this->model->update($id, $data);
+        $client = $this->model->where('anime_id', $anime_id)->update($id, $data);
 
         if (!$client) {
             return $this->respond('', 404);
@@ -66,10 +66,10 @@ class Episodios extends ResourceController
     /**
      * Pega anime pelo id 
      */
-    public function delete($id = null)
+    public function delete($anime_id = null, $id = null)
     {
 
-        $client = $this->model->delete($id);
+        $client = $this->model->where('anime_id', $anime_id)->delete($id);
 
         if (!$client) {
             return $this->respond('', 404);
@@ -81,13 +81,28 @@ class Episodios extends ResourceController
 
 
     /**
-     * Pega episódios de um anime espécifico
+     * Pega todos os episódios de um anime específico
      */
-    public function getEpisodios($id = null)
+    public function getEpisodios($anime_id = null)
     {
-        $client = $this->model->where('episodio_id',$id)->findAll();
+        $episodios = $this->model->where('anime_id',$anime_id)->findAll();
 
-        if (!$client) {
+        if (!$episodios) {
+            return $this->respond('', 404);
+        }
+
+        return $this->respond('', 201);
+    }
+
+
+    /**
+     * Pega episódios de um anime específico
+     */
+    public function getEpisodiosById($anime_id = null, $id = null)
+    {
+        $episodios = $this->model->where('anime_id', $anime_id)->where('id', $id)->findAll();
+
+        if (!$episodios) {
             return $this->respond('', 404);
         }
 
