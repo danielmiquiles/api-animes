@@ -18,6 +18,7 @@ class Episodios extends ResourceController
     public function store($anime_id = null)
     {
         $request = $this->request->getJSON();
+
         $data = [
             'anime_id' => $anime_id,
             'nome' => $request->nome,
@@ -31,20 +32,6 @@ class Episodios extends ResourceController
         }
 
         return $this->respond('', 201);
-    }
-
-    /**
-     * Pega anime pelo id
-     */
-    public function find($id)
-    {
-        $client = $this->model->find($id);
-
-        if (!$client) {
-            return $this->respond('', 404);
-        }
-
-        return $this->respond($client, 201);
     }
 
     /**
@@ -91,7 +78,7 @@ class Episodios extends ResourceController
             return $this->respond('', 404);
         }
 
-        return $this->respond('', 201);
+        return $this->respond($episodios, 200);
     }
 
 
@@ -106,6 +93,6 @@ class Episodios extends ResourceController
             return $this->respond('', 404);
         }
 
-        return $this->respond('', 201);
+        return $this->respond($episodios, 200);
     }
 }

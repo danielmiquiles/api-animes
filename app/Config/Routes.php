@@ -40,7 +40,7 @@ $routes->delete('/animes/(:num)', 'Animes::delete/$1');
 $routes->get('/animes/(:num)/episodios', 'Episodios::getEpisodios/$1');
 $routes->get('/anime/(:num)/episodio/(:num)', 'Episodios::getEpisodiosById/$1/$2');
 $routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
-$routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::store/$1/$2');
+$routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
 $routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
 
 
