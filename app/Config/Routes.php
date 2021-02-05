@@ -31,24 +31,17 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/animes', 'Animes::index');
-$routes->get('/animes/(:num)', 'Animes::find/$1');
-$routes->post('/animes', 'Animes::store');
-$routes->put('/animes/(:num)', 'Animes::update/$1');
-$routes->delete('/animes/(:num)', 'Animes::delete/$1');
+$routes->get('/anime', 'Animes::index');
+$routes->get('/anime/(:num)', 'Animes::find/$1');
+$routes->post('/anime', 'Animes::store');
+$routes->put('/anime/(:num)', 'Animes::update/$1');
+$routes->delete('/anime/(:num)', 'Animes::delete/$1');
 
-$routes->get('/animes/(:num)/episodios', 'Episodios::getEpisodios/$1');
+$routes->get('/anime/(:num)/episodios', 'Episodios::getEpisodios/$1');
 $routes->get('/anime/(:num)/episodio/(:num)', 'Episodios::getEpisodiosById/$1/$2');
 $routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
 $routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
 $routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
-
-
-
-
-
-
-
 
 /**
  * --------------------------------------------------------------------

@@ -30,6 +30,7 @@ class TabelaUsuarios extends Migration
 			'updated_at' => [
                 'type' => 'datetime',
                 'null' => true,
+                'default' => null,
             ],
         'created_at datetime default current_timestamp',
         ]);
