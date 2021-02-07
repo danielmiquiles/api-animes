@@ -22,6 +22,7 @@ class TabelaUsuarios extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => '100',
                 'null' => false,
+                'unique' => true,
             ],
             'senha' => [
                 'type' => 'TEXT',
@@ -32,6 +33,10 @@ class TabelaUsuarios extends Migration
                 'null' => true,
                 'default' => true,
 			],
+            // 'token' => [
+            //     'type' => 'TEXT',
+            //     'null' => true,
+            // ],
 			'updated_at' => [
                 'type' => 'datetime',
                 'null' => true,

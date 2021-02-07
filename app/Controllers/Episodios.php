@@ -35,7 +35,7 @@ class Episodios extends ResourceController
     }
 
     /**
-     * Pega anime pelo id 
+     * Altera anime pelo id 
      */
     public function update($anime_id = null, $id = null)
     {

@@ -43,7 +43,11 @@ $routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
 $routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
 $routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
 
-$routes->put('/usuario', 'Usuarios::store');
+
+$routes->post('/usuario/login', 'Usuarios::index');
+$routes->post('/cadastro', 'Usuarios::store');
+$routes->put('/usuario/(:num)', 'Usuarios::update/$1');
+$routes->delete('/usuario/(:num)', 'Usuarios::delete/$1');
 
 
 
