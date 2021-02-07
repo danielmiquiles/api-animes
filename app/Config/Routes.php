@@ -43,6 +43,19 @@ $routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
 $routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
 $routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
 
+$routes->put('/usuario', 'Usuarios::store');
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

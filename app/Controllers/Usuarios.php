@@ -32,7 +32,5 @@ class Usuarios extends ResourceController
         }
 
         return $this->respond('', 201);
-    }
-
-    
+    }    
 }

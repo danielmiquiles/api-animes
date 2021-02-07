@@ -27,6 +27,11 @@ class TabelaUsuarios extends Migration
                 'type' => 'TEXT',
                 'null' => true,
 			],
+            'ativo' => [
+                'type' => 'BOOLEAN',
+                'null' => true,
+                'default' => true,
+			],
 			'updated_at' => [
                 'type' => 'datetime',
                 'null' => true,
