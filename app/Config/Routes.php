@@ -31,20 +31,40 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/anime', 'Animes::index');
-$routes->get('/anime/(:num)', 'Animes::find/$1');
-$routes->post('/anime', 'Animes::store');
-$routes->put('/anime/(:num)', 'Animes::update/$1');
-$routes->delete('/anime/(:num)', 'Animes::delete/$1');
 
-$routes->get('/anime/(:num)/episodios', 'Episodios::getEpisodios/$1');
-$routes->get('/anime/(:num)/episodio/(:num)', 'Episodios::getEpisodiosById/$1/$2');
-$routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
-$routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
-$routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
+$routes->group('anime', ['filter' => 'auth'], function ($routes) {
+	$routes->get('all', 'Animes::index');
+	$routes->get('(:num)', 'Animes::find/$1');
+	$routes->post('', 'Animes::store');
+	$routes->put('(:num)', 'Animes::update/$1');
+	$routes->delete('(:num)', 'Animes::delete/$1');
+});
+
+// $routes->group('usuario', ['filter' => 'auth'], function ($routes) {
+// 	$routes->post('login', 'Usuarios::index');
+// 	$routes->post('cadastro', 'Usuarios::store');
+// 	$routes->put('(:num)', 'Usuarios::update/$1');
+// 	$routes->delete('(:num)', 'Usuarios::delete/$1');
+// });
 
 
-$routes->post('/usuario/login', 'Usuarios::index');
+
+
+
+// $routes->get('/anime', 'Animes::index', ['filter' => 'auth']);
+// $routes->get('/anime/(:num)', 'Animes::find/$1');
+// $routes->post('/anime', 'Animes::store');
+// $routes->put('/anime/(:num)', 'Animes::update/$1');
+// $routes->delete('/anime/(:num)', 'Animes::delete/$1');
+
+// $routes->get('/anime/(:num)/episodios', 'Episodios::getEpisodios/$1');
+// $routes->get('/anime/(:num)/episodio/(:num)', 'Episodios::getEpisodiosById/$1/$2');
+// $routes->post('/anime/(:num)/episodio', 'Episodios::store/$1');
+// $routes->put('/anime/(:num)/episodio/(:num)', 'Episodios::update/$1/$2');
+// $routes->delete('/anime/(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
+
+
+$routes->post('/login', 'Usuarios::login');
 $routes->post('/cadastro', 'Usuarios::store');
 $routes->put('/usuario/(:num)', 'Usuarios::update/$1');
 $routes->delete('/usuario/(:num)', 'Usuarios::delete/$1');

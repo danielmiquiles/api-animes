@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use App\Controllers\Usuarios;
 use Exception;
 
 class Animes extends ResourceController
@@ -18,9 +19,10 @@ class Animes extends ResourceController
      */
     public function index()
     {
+
         return $this->respond(
             [
-                'clients' => $this->model->findAll()
+                'animes' => $this->model->findAll()
             ],
             200
         );
