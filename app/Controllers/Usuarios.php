@@ -19,14 +19,6 @@ class Usuarios extends ResourceController
 
     // use ResponseTrait;
     protected $modelName = '\App\Models\Usuarios';
-    public $logado = false;
-
-
-    // private function getKey()
-    // {
-
-    //     return "my_application_secret";
-    // }
 
     /**
      *  Retorna todos os animes
@@ -51,30 +43,6 @@ class Usuarios extends ResourceController
 
         return $this->getJWTForUser($usuario['email']);
     }
-
-
-    // /**
-    //  * Cadastra novo usuario
-    //  */
-    // public function store()
-    // {
-    //     $request = $this->request->getJSON();
-    //     $data = [
-    //         'nome' => $request->nome,
-    //         'email' => $request->email,
-    //         'senha' => password_hash($request->senha, PASSWORD_DEFAULT),
-    //         // 'token' => hash('md5', rand(1000000,9999999).$request->nome.$request->email)
-    //     ];
-
-    //     $result = $this->model->insert($data);
-
-    //     if (!$result) {
-    //         return $this->respond('', 404);
-    //     }
-
-    //     return $this->respond('', 201);
-    // }
-
 
     // /**
     //  * Altera dados do usuário 
@@ -108,8 +76,11 @@ class Usuarios extends ResourceController
 
     //     return $this->respond($client, 200);
     // }
+    
 
-
+    /**
+     * Cadastra novo usuario
+     */
     public function store()
     {
         $input = $this->request->getJSON();
@@ -136,36 +107,7 @@ class Usuarios extends ResourceController
                 ResponseInterface::HTTP_CREATED
             );
     }
-
-    /**
-     * Authenticate Existing User
-     * @return Response
-     */
-    // public function login()
-    // {
-    //     $rules = [
-    //         'email' => 'required|min_length[6]|max_length[50]|valid_email',
-    //         'password' => 'required|min_length[8]|max_length[255]|validateUser[email, password]'
-    //     ];
-
-    //     $errors = [
-    //         'password' => [
-    //             'validateUser' => 'Invalid login credentials provided'
-    //         ]
-    //     ];
-
-    //     $input = $this->getRequestInput($this->request);
-
-
-    //     if (!$this->validateRequest($input, $rules, $errors)) {
-    //         return $this
-    //             ->getResponse(
-    //                 $this->validator->getErrors(),
-    //                 ResponseInterface::HTTP_BAD_REQUEST
-    //             );
-    //     }
-    //     return $this->getJWTForUser($input['email']);
-    // }
+    
 
     private function getJWTForUser(string $emailAddress, int $responseCode = ResponseInterface::HTTP_OK)
     {
