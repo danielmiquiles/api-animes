@@ -23,7 +23,7 @@ class Usuarios extends ResourceController
     /**
      *  Retorna todos os animes
      */
-    public function index()
+    public function login()
     {
         $request = $this->request->getJSON();
 
