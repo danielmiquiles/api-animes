@@ -33,15 +33,6 @@ if ($method == "OPTIONS") {
 }
 
 
-
-
-
-
-
-
-
-
-
 // Ensure the current directory is pointing to the front controller's directory
 chdir(__DIR__);
 
