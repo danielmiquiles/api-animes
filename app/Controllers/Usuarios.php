@@ -20,6 +20,15 @@ class Usuarios extends ResourceController
     // use ResponseTrait;
     protected $modelName = '\App\Models\Usuarios';
 
+    public function index(){
+        $this->respond(
+            [
+                'mensagem' => 'Tudo OK',
+            ],
+            200
+        );
+    }
+
     /**
      *  Retorna todos os animes
      */

@@ -9,13 +9,9 @@ class TabelaEpisodios extends Migration
 		$this->forge->addField([
             'id' => [
                 'type' => 'INT',
-                'constraint' => 7,
-                'unsigned' => true,
-                'auto_increment' => true,
             ],
             'numero' => [
                 'type' => 'INT',
-                'constraint' => 4,
                 'null' => false
             ],
             'nome' => [
@@ -25,19 +21,18 @@ class TabelaEpisodios extends Migration
             ],
             'anime_id' => [
                 'type' => 'INT',
-                'constraint' => 7,
                 'null' => false,
             ],
             'assistido' => [
-                'type' => 'bit',
+                'type' => 'boolean',
                 'null' => false,
-                'default' => 0,
+                'default' => 'f',
 			],
 			'updated_at' => [
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,                
             ],
-        'created_at datetime default current_timestamp',
+        'created_at timestamp default CURRENT_TIMESTAMP',
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('episodio');

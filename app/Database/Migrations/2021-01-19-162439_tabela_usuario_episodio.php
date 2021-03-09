@@ -11,31 +11,33 @@ class TabelaUsuarioEpisodio extends Migration
 		$this->forge->addField([
 			'id' => [
 				'type' => 'INT',
-				'constraint' => 7,
-				'unsigned' => true,
-				'auto_increment' => true,
 			],
 			'episodio_id' => [
 				'type' => 'INT',
-				'constraint' => 7,
-				'null' => false
+				'null' => false,
 			],
 			'usuario_id' => [
 				'type' => 'INT',
-				'constraint' => 7,
-				'null' => false
+				'null' => false,
 			],
-			'assistido boolean default 1',
-			'created_at datetime default current_timestamp',
+			'assistido' => [
+				'type' => 'boolean',
+				'default' => 'f',
+				'null' => false,
+			],
+			'created_at' => [
+				'type' => 'timestamp',
+				'default' => 'CURRENT_TIMESTAMP',
+			],
 		]);
 		$this->forge->addPrimaryKey('id');
-		$this->forge->createTable('usuario_episodio');
+		$this->forge->createTable('usuarioEpisodio');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('usuario_episodio');
+		$this->forge->dropTable('usuarioEpisodio');
 	}
 }

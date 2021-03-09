@@ -9,9 +9,6 @@ class TabelaUsuarios extends Migration
 		$this->forge->addField([
             'id' => [
                 'type' => 'INT',
-                'constraint' => 7,
-                'unsigned' => true,
-                'auto_increment' => true,
             ],
             'nome' => [
                 'type' => 'VARCHAR',
@@ -29,20 +26,16 @@ class TabelaUsuarios extends Migration
                 'null' => true,
 			],
             'ativo' => [
-                'type' => 'BOOLEAN',
+                'type' => 'boolean',
                 'null' => true,
-                'default' => true,
+                'default' => 't',
 			],
-            // 'token' => [
-            //     'type' => 'TEXT',
-            //     'null' => true,
-            // ],
 			'updated_at' => [
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,
                 'default' => null,
             ],
-        'created_at datetime default current_timestamp',
+        'created_at timestamp default CURRENT_TIMESTAMP',
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('usuario');

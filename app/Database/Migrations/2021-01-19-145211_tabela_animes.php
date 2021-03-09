@@ -9,9 +9,7 @@ class TabelaAnimes extends Migration
 		$this->forge->addField([
             'id' => [
                 'type' => 'INT',
-                'constraint' => 7,
-                'unsigned' => true,
-                'auto_increment' => true,
+                'constraint' => 'serial',
             ],
             'nome' => [
                 'type' => 'VARCHAR',
@@ -20,7 +18,6 @@ class TabelaAnimes extends Migration
             ],
             'ano' => [
                 'type' => 'int',
-                'constraint' => 7,
                 'null' => true,
             ],
             'imagem' => [
@@ -29,10 +26,10 @@ class TabelaAnimes extends Migration
                 'null' => true,
 			],
 			'updated_at' => [
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,
             ],
-        'created_at datetime default current_timestamp',
+        'created_at timestamp default CURRENT_TIMESTAMP',
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('anime');
