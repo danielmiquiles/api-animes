@@ -1,5 +1,6 @@
 <?php namespace Config;
 
+use App\Filters\JWTAuthFilter;
 use CodeIgniter\Config\BaseConfig;
 
 class Filters extends BaseConfig
@@ -10,6 +11,7 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
+		'auth' => JWTAuthFilter::class // add this line
 	];
 
 	// Always applied before every request

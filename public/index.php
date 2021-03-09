@@ -2,8 +2,7 @@
 
 // Valid PHP Version?
 $minPHPVersion = '7.2';
-if (phpversion() < $minPHPVersion)
-{
+if (phpversion() < $minPHPVersion) {
 	die("Your PHP version must be {$minPHPVersion} or higher to run CodeIgniter. Current version: " . phpversion());
 }
 unset($minPHPVersion);
@@ -24,6 +23,15 @@ $pathsPath = realpath(FCPATH . '../app/Config/Paths.php');
  * our autoloader, along with Composer's, loads our constants
  * and fires up an environment-specific bootstrapping.
  */
+
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if ($method == "OPTIONS") {
+	die();
+}
+
 
 // Ensure the current directory is pointing to the front controller's directory
 chdir(__DIR__);
