@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'https://animeswatched.herokuapp.com/';
+	public $baseURL = 'https://animeswatched.herokuapp.com';
 
 	/*
 	|--------------------------------------------------------------------------

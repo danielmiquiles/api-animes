@@ -21,7 +21,7 @@ class Usuarios extends ResourceController
     protected $modelName = '\App\Models\Usuarios';
 
     public function index(){
-        $this->respond(
+        return $this->respond(
             [
                 'mensagem' => 'Tudo OK',
             ],
