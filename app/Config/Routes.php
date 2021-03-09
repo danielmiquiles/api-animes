@@ -47,7 +47,7 @@ $routes->group('anime', ['filter' => 'auth'], function ($routes) {
 	$routes->delete('(:num)/episodio/(:num)', 'Episodios::delete/$1/$2');
 	
 });
-$routes->get('/', 'Usuarios::index');
+$routes->get('', 'Animes::index');
 $routes->post('/login', 'Usuarios::login');
 $routes->post('/cadastro', 'Usuarios::store');
 $routes->put('/usuario/(:num)', 'Usuarios::update/$1');
